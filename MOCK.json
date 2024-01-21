@@ -1,0 +1,48 @@
+{
+    "uuid": "020b1214-1b5b-4632-a296-8b400efc3fd7",
+    "type": "http",
+    "documentation": "Generate random product",
+    "method": "get",
+    "endpoint": "products",
+    "responses": [
+        {
+            "uuid": "59b14e20-72bf-4cd4-b634-0fb524523d92",
+            "body": "{\n  \"Products examples\": \"lista de productos\",\n  \"list\": [\n    {{# repeat (queryParam 'total' '8') }}\n      {\n        \"productId\": \"{{ faker 'number.int' min=10000 max=100000 }}\",\n        \"productName\": \"{{ faker 'string.alphanumeric' 10}}\",\n        \"description\": \"{{ faker 'string.alphanumeric' 25}}\",\n        \"price\": \"{{ faker 'number.int' min=0 max=25 }}\",\n        \"category\": [\n            {\n              \"id\": \"{{ faker 'string.uuid' }}\",\n              \"description\": \"{{ faker 'string.alphanumeric' 25}}\"\n            }\n        ]\n      },\n    {{/ repeat }}\n  ],\n  \"total\": \"{{queryParam 'total' '10'}}\"\n}",
+            "latency": 0,
+            "statusCode": 200,
+            "label": "Creates 10 random users, or the amount specified in the 'total' query param",
+            "headers": [],
+            "bodyType": "INLINE",
+            "filePath": "",
+            "databucketID": "",
+            "sendFileAsBody": false,
+            "rules": [],
+            "rulesOperator": "OR",
+            "disableTemplating": false,
+            "fallbackTo404": false,
+            "default": true,
+            "crudKey": "id",
+            "callbacks": []
+        },
+        {
+            "uuid": "f0ae0194-76eb-4050-94d2-0e41e1390648",
+            "body": "{}",
+            "latency": 0,
+            "statusCode": 200,
+            "label": "",
+            "headers": [],
+            "bodyType": "INLINE",
+            "filePath": "",
+            "databucketID": "",
+            "sendFileAsBody": false,
+            "rules": [],
+            "rulesOperator": "OR",
+            "disableTemplating": false,
+            "fallbackTo404": false,
+            "default": false,
+            "crudKey": "id",
+            "callbacks": []
+        }
+    ],
+    "responseMode": null
+}

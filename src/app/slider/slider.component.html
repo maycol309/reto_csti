@@ -1,0 +1,95 @@
+<div class='container-fluid'>
+  <div class="row" style="padding: 10px;">
+    <div class="col-sm-11 btn">
+      Proyecto Angular 8
+    </div>
+    <div class="col-sm-1 btn btn-info" (click)="irComprar()">
+      <img src="assets/icons/cart.svg" alt="" height="24px" width="24px">
+      <span *ngIf="cart.length > 0" class="cart">{{cart.length}}</span>
+    </div>
+  </div>
+  <div class="row" style="padding: 10px;">
+    <div class="input-group">
+      <input type="search" class="form-control rounded" placeholder="Encuentra tu vale favorito aqui"
+        aria-label="Search" aria-describedby="search-addon" />
+      <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>Buscar</button>
+    </div>
+  </div>
+  <div class='col-12'>
+    <ngb-carousel>
+      <ng-template ngbSlide>
+        <img src="assets/slides/image01.png" alt="Delhi Metro">
+        <div class="carousel-caption">
+          <h3 style="color: yellow">Delhi Metro</h3>
+          <h5>Primer slide</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="assets/slides/image02.gif" alt="Bangalore Metro">
+        <div class="carousel-caption">
+          <h3 style="color: yellow">Bangalore Metro</h3>
+          <h5>Segundo slide</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="assets/slides/image03.png" alt="Channai Metro">
+        <div class="carousel-caption">
+          <h3 style="color: yellow">Channai Metro</h3>
+          <h5>Tercer slide</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="assets/slides/image04.png" alt="Jaipur Metro">
+        <div class="carousel-caption">
+          <h3 style="color: yellow">Jaipur Metro</h3>
+          <h5>Cuarto slide</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+  <div class="container" style="padding: 20px;">
+    <div class="card-deck">
+      <div class='col-sm-3' *ngFor="let item of listProducts">
+      <div class="card bg-default">
+        <img class="card-img-top" src="assets/product.png" alt="Card image">
+        <div class="card-body text-center">
+          <h4 class="card-title">{{item.productName}}</h4>
+          <p class="card-text">{{item.description}}</p>
+          <p class="card-text">S/. {{item.price | number : "1.2-2"}}</p>
+          <button class="btn btn-success" (click)="agregarCarrito(item)">Agregar Carrito</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding: 20px;">
+    <h3>Lista de Productos por Categoria</h3>
+    <div class="row">
+    <div class="form-group col-md-4">
+      <label for="usr">Categoría:</label>
+      <select class="form-control" name="categoria" id="categoria" (change)="buscarPorCategoria($event.target.value)">
+        <option *ngFor="let cat of listCategory" value="{{cat.id}}">{{cat.category}}</option>
+      </select>
+    </div>
+    </div>
+    <div class="card-deck">
+      <div class='col-sm-3' *ngFor="let item of productsByCategory">
+      <div class="card bg-default">
+        <img class="card-img-top" src="assets/product.png" alt="Card image">
+        <div class="card-body text-center">
+          <h4 class="card-title">{{item.productName}}</h4>
+          <p class="card-text">{{item.description}}</p>
+          <p class="card-text">S/. {{item.price | number : "1.2-2"}}</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</div>
